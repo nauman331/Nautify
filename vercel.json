@@ -1,9 +1,13 @@
 {
     "version": 2,
+<<<<<<< HEAD
     "name": "Nautify",
+=======
+    "name": "Nautify"
+>>>>>>> 509e9ed76e32b0f95633bf1a3b11e7e6a5c51b07
     "builds": [
         {
-            "src": "app.js",
+            "src": "./app.js",
             "use": "@vercel/node"
         }
     ],
