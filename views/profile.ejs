@@ -1,0 +1,89 @@
+<%- include('partials/header') %>
+
+
+    <body class="bg-[#dadada]">
+        <div class="flex items-center justify-center">
+            <div
+                class="bg-white shadow-lg flex flex-col items-center profile-cover justify-center mt-5 h-96 w-[90%] rounded-lg">
+                <div class="relative" id="upload">
+                    <img src="/images/uploads/<%= user.profileImage %>" alt="..."
+                        class="h-32 w-32 rounded-full m-5 bg-yellow-400" />
+
+
+
+                    <span id="uploadicon"
+                        class="cursor-pointer absolute right-5 bottom-5 bg-yellow-600 rounded-full p-2 text-white">
+                        <i data-feather="edit"></i>
+
+                    </span>
+                </div>
+                <h1 class="text-yellow-600 font-bold">
+                    <%= user.fullname %>
+                </h1>
+                <div class="m-5 text-center flex flex-col justify-evenly items-center">
+
+                    <h2>
+                        @<%= user.username %>
+                    </h2>
+                    <a href="/edit"
+                        class="bg-[#dadada] hover:bg-yellow-800 shadow-inner hover:shadow-none text-white mt-2 rounded-full cursor-pointer w-12">edit
+                    </a>
+                    <a href="/addpost"
+                        class="bg-yellow-600 mt-2 hover:bg-yellow-700 text-white hover:shadow-none px-4 py-1.5 rounded shadow-lg">Add
+                        New Post</a>
+
+                </div>
+                <form method="post" hidden id="uploadform" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name="file" />
+                </form>
+                <script>
+                    document.querySelector('#uploadicon').addEventListener("click", function () {
+                        document.querySelector("#uploadform input").click();
+                    });
+                    document.querySelector('#uploadform input').addEventListener("change", function () {
+                        document.querySelector("#uploadform").submit();
+                    });
+                    feather.replace();
+                </script>
+
+
+            </div>
+        </div>
+        <hr class="text-yellow-800 mt-5" />
+        <h1 class="flex items-center justify-center font-bold text-yellow-800">YOUR POSTS</h1>
+        <div class="flex items-center justify-evenly md:flex-row w-[100%] flex-wrap gap-5 flex-col">
+            <% user.posts.forEach(function(elem){ %>
+                <!-- component -->
+
+                <div class="flex justify-center items-center flex-wrap mt-3 mb-3 gap-2">
+
+                    <!-- Card -->
+                    <div class="col-span-3 bg-white w-[90%] md:w-auto text-center rounded-xl h-auto">
+
+
+                        <!-- City Name -->
+                        <p class="text-xl font-bold px-3">
+                            <%= elem.posttitle %>
+                        </p>
+
+                        <!-- Distance -->
+                        <p class="text-sm font-light px-3 text-center pb-10">
+                            <%= elem.description %>
+                        </p>
+
+
+                        <!-- Image -->
+                        <img src="/images/uploads/<%= elem.postimage %>"
+                            class="rounded-b-xl object-cover max-h-44 w-full" />
+
+                    </div>
+                </div>
+
+
+
+                <% }); %>
+        </div>
+
+    </body>
+
+    </html>

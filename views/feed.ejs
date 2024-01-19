@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+    <body class="bg-[#dadada]">
+
+        <div
+            class="container mx-auto px-4 flex flex-wrap gap-5 w-[100%] md:flex-row flex-col justify-center md:justify-evenly">
+            <% posts.forEach(function(elem){ %>
+                <!-- component -->
+
+                <div class="flex justify-center items-center flex-wrap mt-3 mb-3 gap-2">
+
+                    <!-- Card -->
+                    <div class="col-span-3 bg-white w-[90%] md:w-auto text-center rounded-xl h-auto">
+
+
+                        <!-- City Name -->
+                        <p class="text-xl font-bold px-3">
+                            <%= elem.posttitle %>
+                        </p>
+
+                        <!-- Distance -->
+                        <p class="text-sm font-light px-3 text-center pb-10">
+                            <%= elem.description %>
+                        </p>
+
+
+                        <!-- Image -->
+                        <img src="/images/uploads/<%= elem.postimage %>"
+                            class="rounded-b-xl object-cover max-h-52 w-full" />
+
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+
+
+
+
+
+    </body>
+
+    </html>
