@@ -7,7 +7,10 @@
         {
             "src": "/",
             "dest": "/app.js",
-            "methods": ["POST", "GET" ]
+            "methods": ["POST", "GET" ], 
         }
-    ]
+    ],
+    "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
 }
