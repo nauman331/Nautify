@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb://127.0.0.1:27017/nautify");
+mongoose.connect(process.env.CONNECTION_STRING)
+  .then(() => console.log('connected to database'))
+  .catch((err) => console.log(err));
 const plm = require("passport-local-mongoose");
 
 const Schema = mongoose.Schema;
