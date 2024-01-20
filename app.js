@@ -1,11 +1,11 @@
 const createError = require('http-errors');
+const env = require("dotenv").config();
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const expressSession = require("express-session");
 const flash = require('connect-flash');
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const passport = require('passport');
