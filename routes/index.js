@@ -19,7 +19,7 @@ router.get('/login', function (req, res, next) {
 });
 //feed page
 router.get('/feed', isLoggedIn, async function (req, res, next) {
-  const posts = await postModel.find().populate("user");
+  const posts = await postModel.find().sort({ $natural: -1 }).populate("user");
   res.render('feed', { posts, nav: true });
 });
 
