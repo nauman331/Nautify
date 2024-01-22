@@ -64,14 +64,14 @@ router.post('/register', function (req, res) {
   userModel.register(userData, req.body.password)
     .then(function (registereduser) {
       passport.authenticate("local")(req, res, function () {
-        res.redirect('/profile');
+        res.redirect('/feed');
       })
     })
 })
 
 //login rout
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/profile",
+  successRedirect: "/feed",
   failureRedirect: "/login",
   failureFlash: true
 }), function (req, res) { });
