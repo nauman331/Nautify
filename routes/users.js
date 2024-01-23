@@ -21,6 +21,13 @@ const UserSchema = new Schema({
       ref: 'Post'
     }
   ],
+
+  chats: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post'
+    }
+  ],
   email: {
     type: String,
     required: true,

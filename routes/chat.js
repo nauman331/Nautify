@@ -1,16 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const PostSchema = new Schema({
-    description: {
-        type: String
-    },
-    posttitle: {
-        type: String
-    },
-    postimage: {
-        type: String
-    },
+const chatSchema = new Schema({
     user: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -24,4 +15,4 @@ const PostSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Post', PostSchema);
+module.exports = mongoose.model('Chat', chatSchema);

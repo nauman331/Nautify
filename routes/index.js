@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const userModel = require("./users");
 const postModel = require("./posts");
+const chatModel = require("./chat");
 const passport = require('passport');
 const localStrategy = require("passport-local");
 const upload = require('./multer');
@@ -14,6 +15,7 @@ router.get('/', function (req, res, next) {
   res.render('index', { nav: false });
 });
 
+
 router.get('/login', function (req, res, next) {
   res.render('login', { error: req.flash('error'), nav: false });
 });
@@ -21,6 +23,11 @@ router.get('/login', function (req, res, next) {
 router.get('/feed', isLoggedIn, async function (req, res, next) {
   const posts = await postModel.find().sort({ $natural: -1 }).populate("user");
   res.render('feed', { posts, nav: true });
+});
+//chat page
+router.get('/chat', isLoggedIn, async function (req, res, next) {
+  const chats = await chatModel.find().sort({ $natural: -1 }).populate("user");
+  res.render('chat', { chats, nav: true });
 });
 
 /* Profie rout */
@@ -53,6 +60,19 @@ router.post('/addpost', isLoggedIn, upload.single("postImage"), async function (
   user.posts.push(post._id);
   await user.save();
   res.redirect('/profile')
+});
+
+//creating comment
+router.post('/chat', isLoggedIn, async function (req, res, next) {
+  const user = await userModel.findOne({
+    username: req.session.passport.user
+  });
+  const chat = await chatModel.create({
+    chat: req.body.chat
+  })
+  user.chats.push(chat._id);
+  await user.save();
+  res.redirect('/chat')
 });
 
 //register rout without password
