@@ -12,17 +12,57 @@
     <title>NAUTIFY</title>
 </head>
 
-<body class="bg-[#dadada]">
-    <% if( nav===true ){ %>
-        <div class="flex items-center justify-between w-full px-10 py-3">
-            <h1 class="text-yellow-800 font-bold md:text-lg text-xs">NAUTIFY</h1>
-            <div class="flex items-center justify-evenly gap-5">
-                <a href="/feed">Feed</a>
-                <a href="/profile">Profile</a>
-                <a href="/chat">Chat</a>
-                <a href="/logout"
-                    class="bg-yellow-600 hover:bg-yellow-700 text-white hover:shadow-none px-4 py-1.5 rounded shadow-lg">Logout</a>
+<body class="bg-yellow-400">
+    <div class="md:block hidden">
+        <% if( nav===true ){ %>
+            <div class="flex items-center justify-between w-full px-10 py-3 bg-yellow-500 fixed top-0 shadow-lg">
+                <h1 class="text-yellow-800 font-bold md:text-lg text-xs">NAUTIFY</h1>
+                <div class="flex items-center justify-evenly gap-5">
+                    <a href="/feed">Feed</a>
+                    <a href="/profile">Profile</a>
+                    <a href="/chat">Chat</a>
+                    <a href="/logout"
+                        class="bg-yellow-600 hover:bg-yellow-700 text-white hover:shadow-none px-4 py-1.5 rounded shadow-lg">Logout</a>
+                </div>
             </div>
-        </div>
-        <hr />
-        <% } %>
+            <hr />
+            <% } %>
+    </div>
+    <div class="md:hidden">
+        <% if( nav===true ){ %>
+            <div
+                class="bg-yellow-600 w-full  h-16 px-6 py-2 flex justify-between text-gray-font fixed bottom-0 shadow-lg z-40 border-t border-gray-99">
+                <a href="/feed">
+                    <span
+                        class="px-2 py-1 cursor-pointer hover:bg-gray-200 hover:text-gray-700 text-sm  flex flex-col items-center text-center text-primary">
+                        <i class="w-8 fas fa-home p-1">
+                        </i>
+                        <span class="mx-1 font-roboto">Home</span>
+                    </span>
+                </a>
+                <a href="/chat">
+                    <span
+                        class="px-2 py-1 cursor-pointer hover:bg-gray-200 hover:text-gray-700 text-sm  flex flex-col items-center text-center">
+                        <i class="w-8 fas fa-envelope p-1">
+                        </i>
+                        <span class="mx-1 font-roboto">Chat</span>
+                    </span>
+                </a>
+                <a href="/profile">
+                    <span
+                        class="px-2 py-1 cursor-pointer hover:bg-gray-200 hover:text-gray-700 text-sm   flex flex-col items-center text-center">
+                        <i class="w-8 fas fa-user-circle p-1">
+                        </i>
+                        <span class="mx-1 font-roboto">Profile</span>
+                    </span>
+                </a>
+                <a href="/logout">
+                    <span
+                        class="px-2 py-1 cursor-pointer hover:bg-gray-200 hover:text-gray-700 text-sm   flex flex-col items-center text-center">
+                        <i class="fa-solid fa-right-from-bracket w-8 p-1"></i>
+                        <span class="mx-1 font-roboto">Logout</span>
+                    </span>
+                </a>
+            </div>
+            <% } %>
+    </div>

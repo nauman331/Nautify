@@ -1,88 +1,86 @@
 <%- include('partials/header') %>
 
-    <body class="bg-[#dadada]">
-        <div class="flex items-center justify-between m-5">
-            <h1 class="flex items-center justify-center m-5">Now you can group chat in <span
-                    class="text-yellow-800 font-bold ml-3">NAUTIFY</span></h1>
-            <a href="/chat" title="group chat">
-                <i class="fa-solid fa-comments text-xl text-yellow-800"></i>
-            </a>
-        </div>
-        <div
-            class="container mx-auto flex flex-wrap gap-5 w-[100%] md:flex-row flex-col justify-center md:justify-evenly">
-            <% posts.forEach(function(elem){ %>
-                <!-- component -->
+    <div class="flex items-center justify-between m-5 md:mt-20">
+        <h1 class="flex items-center justify-center m-5">Now you can group chat in <span
+                class="text-yellow-800 font-bold ml-3">NAUTIFY</span></h1>
+        <a href="/chat" title="group chat">
+            <i class="fa-solid fa-comments text-xl text-yellow-800"></i>
+        </a>
+    </div>
+    <div class="container mx-auto flex flex-wrap gap-5 w-[100%] md:flex-row flex-col justify-center md:justify-evenly">
+        <% posts.forEach(function(elem){ %>
+            <!-- component -->
 
-                <div class="flex justify-center items-center flex-wrap mt-3 mb-3 gap-2">
+            <div class="flex justify-center items-center flex-wrap mt-3 mb-32 md:mb-3 gap-2">
 
-                    <!-- Card -->
-                    <div class="col-span-3 bg-[#cdcdcd] shadow-lg w-[100%] md:w-auto text-center h-auto">
-                        <div class="flex justify-start items-center">
-                            <img src="/images/uploads/<%= elem.user.profileImage %>"
-                                class="h-10 w-10 md:ml-0 ml-5 rounded-full" />
-                            <p class="ml-3 font-bold text-yellow-700">
-                                <%= elem.user.username %>
-                            </p>
-                        </div>
-                        <hr class="m-2" />
-                        <!-- City Name -->
-                        <p class=" text-xl font-bold px-3">
-                            <%= elem.posttitle %>
-
-
+                <!-- Card -->
+                <div class="col-span-3 bg-yellow-500 shadow-lg w-[100%] md:w-auto text-center h-auto">
+                    <div class="flex justify-start items-center">
+                        <img src="/images/uploads/<%= elem.user.profileImage %>"
+                            class="h-10 w-10 md:ml-0 ml-5 rounded-full" />
+                        <p class="ml-3 font-bold text-yellow-700">
+                            <%= elem.user.username %>
                         </p>
+                    </div>
+                    <hr class="m-2" />
+                    <!-- City Name -->
+                    <p class=" text-xl font-bold px-3">
+                        <%= elem.posttitle %>
 
-                        <!-- Distance -->
-                        <p class="text-sm font-light px-3 text-center pb-2">
-                            <%= elem.description %>
-                        </p>
+
+                    </p>
+
+                    <!-- Distance -->
+                    <p class="text-sm font-light px-3 text-center pb-2">
+                        <%= elem.description %>
+                    </p>
 
 
-                        <!-- Image -->
-                        <img src="/images/uploads/<%= elem.postimage %>" class="object-fit max-h-52 w-full" />
-                        <hr class="mt-2" />
-                        <div class="flex items-center justify-evenly my-3">
-                            <i class="fa-solid fa-heart like text-xl cursor-pointer text-white cursor-pointer"></i>
-                            <i class="fa-solid fa-heart-crack unlike text-xl text-white cursor-pointer"></i>
-                            <i class="fa-solid fa-share text-xl text-blue-600 cursor-pointer"></i>
+                    <!-- Image -->
+                    <img src="/images/uploads/<%= elem.postimage %>" class="object-fit md:max-h-52 max-h-96 w-full" />
+                    <hr class="mt-2" />
+                    <div class="flex items-center justify-evenly my-3">
+                        <i class="fa-solid fa-heart like text-xl cursor-pointer text-white cursor-pointer"></i>
+                        <i class="fa-solid fa-heart-crack unlike text-xl text-white cursor-pointer"></i>
+                        <i class="fa-solid fa-share text-xl text-blue-600 cursor-pointer"></i>
 
-                        </div>
                     </div>
                 </div>
-                <% }); %>
-        </div>
+            </div>
+            <% }); %>
+    </div>
 
-        <script>
-            feather.replace();
-            let likes = document.querySelectorAll('.like');
-            for (let i = 0; i < likes.length; i++) {
-                likes[i].addEventListener("click", function () {
-                    if (this.style.color == 'red') {
-                        this.style.color = 'white';
+    <script>
+        feather.replace();
+        let likes = document.querySelectorAll('.like');
+        for (let i = 0; i < likes.length; i++) {
+            likes[i].addEventListener("click", function () {
+                if (this.style.color == 'red') {
+                    this.style.color = 'white';
 
-                    } else {
-                        this.style.color = 'red';
-                    }
-                })
+                } else {
+                    this.style.color = 'red';
+                }
+            })
 
-            }
-
-
+        }
 
 
-            let unlikes = document.querySelectorAll('.unlike');
-            for (let i = 0; i < unlikes.length; i++) {
-                unlikes[i].addEventListener("click", function () {
-                    if (this.style.color == 'brown') {
-                        this.style.color = 'white';
 
-                    } else {
-                        this.style.color = 'brown';
-                    }
-                })
 
-            }
-        </script>
+        let unlikes = document.querySelectorAll('.unlike');
+        for (let i = 0; i < unlikes.length; i++) {
+            unlikes[i].addEventListener("click", function () {
+                if (this.style.color == 'brown') {
+                    this.style.color = 'white';
+
+                } else {
+                    this.style.color = 'brown';
+                }
+            })
+
+        }
+    </script>
     </body>
 
     </html>
