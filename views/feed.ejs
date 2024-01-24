@@ -23,9 +23,6 @@
                             <p class="ml-3 font-bold text-yellow-700">
                                 <%= elem.user.username %>
                             </p>
-                            <p class="text-sm">
-                                <%= elem.createdAt.time %>
-                            </p>
                         </div>
                         <hr class="m-2" />
                         <!-- City Name -->
@@ -45,9 +42,9 @@
                         <img src="/images/uploads/<%= elem.postimage %>" class="object-fit max-h-52 w-full" />
                         <hr class="mt-2" />
                         <div class="flex items-center justify-evenly my-3">
-                            <i class="fa-solid fa-heart cursor-pointer text-red-800"></i>
-                            <i class="fa-solid fa-heart-crack text-yellow-800 cursor-pointer"></i>
-                            <i class="fa-solid fa-share text-blue-600 cursor-pointer"></i>
+                            <i class="fa-solid fa-heart like text-xl cursor-pointer text-white cursor-pointer"></i>
+                            <i class="fa-solid fa-heart-crack unlike text-xl text-white cursor-pointer"></i>
+                            <i class="fa-solid fa-share text-xl text-blue-600 cursor-pointer"></i>
 
                         </div>
                     </div>
@@ -57,6 +54,34 @@
 
         <script>
             feather.replace();
+            let likes = document.querySelectorAll('.like');
+            for (let i = 0; i < likes.length; i++) {
+                likes[i].addEventListener("click", function () {
+                    if (this.style.color == 'red') {
+                        this.style.color = 'white';
+
+                    } else {
+                        this.style.color = 'red';
+                    }
+                })
+
+            }
+
+
+
+
+            let unlikes = document.querySelectorAll('.unlike');
+            for (let i = 0; i < unlikes.length; i++) {
+                unlikes[i].addEventListener("click", function () {
+                    if (this.style.color == 'brown') {
+                        this.style.color = 'white';
+
+                    } else {
+                        this.style.color = 'brown';
+                    }
+                })
+
+            }
         </script>
     </body>
 

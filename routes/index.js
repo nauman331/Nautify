@@ -14,8 +14,7 @@ passport.use(new localStrategy(userModel.authenticate()))
 router.get('/', function (req, res, next) {
   res.render('index', { nav: false });
 });
-
-
+//login rout
 router.get('/login', function (req, res, next) {
   res.render('login', { error: req.flash('error'), nav: false });
 });
@@ -120,6 +119,7 @@ router.post("/upload", isLoggedIn, upload.single("file"), async function (req, r
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
   res.redirect("/login");
+
 }
 
 

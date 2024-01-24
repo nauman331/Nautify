@@ -21,7 +21,13 @@ const PostSchema = new Schema({
     },
     chat: {
         type: String
-    }
+    },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ]
 });
 
 module.exports = mongoose.model('Post', PostSchema);
