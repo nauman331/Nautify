@@ -25,7 +25,7 @@ router.get('/feed', isLoggedIn, async function (req, res, next) {
 });
 //chat page
 router.get('/chat', isLoggedIn, async function (req, res, next) {
-  const chats = await chatModel.find().sort({ $natural: -1 }).populate("user");
+  const chats = await chatModel.find().sort({ $natural: -1 });
   res.render('chat', { chats, nav: true });
 });
 
@@ -63,14 +63,10 @@ router.post('/addpost', isLoggedIn, upload.single("postImage"), async function (
 
 //creating comment
 router.post('/chat', isLoggedIn, async function (req, res, next) {
-  const user = await userModel.findOne({
-    username: req.session.passport.user
-  });
+
   const chat = await chatModel.create({
     chat: req.body.chat
   })
-  user.chats.push(chat._id);
-  await user.save();
   res.redirect('/chat')
 });
 

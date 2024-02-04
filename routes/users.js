@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
-mongoose.connect(process.env.CONNECTION_STRING)
-  .then(() => console.log('connected to database'))
-  .catch((err) => console.log(err));
 const plm = require("passport-local-mongoose");
+
 
 const Schema = mongoose.Schema;
 
@@ -22,12 +20,6 @@ const UserSchema = new Schema({
     }
   ],
 
-  chats: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Post'
-    }
-  ],
   email: {
     type: String,
     required: true,

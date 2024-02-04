@@ -9,9 +9,20 @@ const flash = require('connect-flash');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const passport = require('passport');
+const mongoose = require('mongoose')
 
 const app = express();
-
+const conn = async () => {
+  try {
+    const success = await mongoose.connect(process.env.CONNECTION_STRING);
+    if (success) {
+      console.log('connected to database')
+    }
+  } catch (err) {
+    console.log(err)
+  }
+}
+conn();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);

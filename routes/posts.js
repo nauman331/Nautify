@@ -11,10 +11,10 @@ const PostSchema = new Schema({
     postimage: {
         type: String
     },
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
-    }],
+    },
     createdAt: {
         type: Date,
         default: Date.now
